@@ -1,0 +1,67 @@
+﻿<Page x:Class="Ratep.Pages.Nomenclature"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ratep.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Nomenclature"
+      FontSize="14">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="205"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid CanUserReorderColumns="False" IsReadOnly="True" MouseDoubleClick="NomData_MouseDoubleClick" x:Name="NomData" AutoGenerateColumns="False"  Margin="5" CanUserAddRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" SelectionMode="Single" SelectionChanged="NomData_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding NameProduct}" Header="Наименование" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Margin="10" Width="105" Height="30" Style="{DynamicResource MainButton}" Click="AddButton_Click">Добавить</Button>
+            <Button Margin="10" Width="105" Height="30" Style="{DynamicResource MainButton}" Click="UpdateButton_Click">Изменить</Button>
+            <Button Margin="10" Width="105" Height="30" Style="{DynamicResource MainButton}" Click="DeleteButton_Click">Удалить</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <GroupBox Header="Сортировка" Margin="10, 10, 10, 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton Checked="RadioButton_Checked" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1">По наименованию</Label>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Фильтрация" Margin="10, 10, 10, 0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label>По наименованию:</Label>
+                    <TextBox TextChanged="FilterTextBox_TextChanged" Grid.Row="1" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
+            </GroupBox>
+            
+            <GroupBox Header="Выгрузка" Margin="10, 10, 10, 0">
+                <Button Margin="10" Width="125" Height="30" Style="{DynamicResource MainButton}" Click="StructureDataButton_Click">Карта сборки</Button>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Page>

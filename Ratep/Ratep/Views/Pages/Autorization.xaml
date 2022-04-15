@@ -1,0 +1,53 @@
+﻿<Page x:Class="Ratep.Pages.Autorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Ratep.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Autorization"
+      FontSize="14">
+    <Grid>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center"
+          Width="255" Height="205"
+          BorderThickness="1" CornerRadius="5" BorderBrush="#E8E8E8"
+          Background="#F9F9F9">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55px"/>
+                    <RowDefinition Height="45px"/>
+                    <RowDefinition Height="45px"/>
+                    <RowDefinition Height="50px"/>
+                </Grid.RowDefinitions>
+
+                <!-- Row 0 -->
+                <Label Style="{DynamicResource HeaderText}" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">Авторизация</Label>
+
+                <!-- Row 1-->
+                <Border Background="#E8E8E8" Margin="20, 0, 20, 0" BorderThickness="1" BorderBrush="#E0E0E0" CornerRadius="15" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" Foreground="#B0B0B0" Margin="5, 0, 0, 0">Логин</Label>
+                        <TextBox x:Name="LoginTxtBx" Background="Transparent" Width="225" VerticalAlignment="Center" BorderThickness="0" Margin="5"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Row 2-->
+                <Border Background="#E8E8E8" Margin="20, 0, 20, 0" BorderThickness="1" BorderBrush="#E0E0E0" CornerRadius="15" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Label VerticalAlignment="Center" Foreground="#B0B0B0" Margin="5, 0, 0, 0">Пароль</Label>
+                        <PasswordBox x:Name="PasswordTxtBx" Background="Transparent" Width="225" VerticalAlignment="Center" BorderThickness="0" Margin="5"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Row 3 -->
+                <Grid Grid.Row="3" VerticalAlignment="Center">
+                    <Button Style="{DynamicResource MainButton}" Width="30" Height="30" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Click="DatabaseClick">
+                        <Image Source="../../src/Images/database.png"></Image></Button>
+                    
+                    <Button Style="{DynamicResource MainButton}" Width="105" Height="30" Margin="0, 0, 20, 0" Click="Button_Click" HorizontalAlignment="Right">Войти</Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

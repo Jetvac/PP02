@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="edd9d24c596949558ebeedc3245bda5e" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="VeloRaModel.Client" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Contract" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Employee" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Manufactory" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.ManufactoryType" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Material" Width="1.5" PointX="12" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Operation" Width="1.5" PointX="9.625" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Order" Width="1.5" PointX="9.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.OrderPosition" Width="1.5" PointX="12.125" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Part_assembly_unit" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Post" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Structure" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Unit" Width="1.5" PointX="11.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Users" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.Card_work" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeloRaModel.MaterialCard" Width="1.5" PointX="9.25" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="VeloRaModel.FK__Client__AccountI__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Contract__Client__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Contract__Employ__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Order__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Employee__Accoun__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Employee__CodePo__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Employee__Manufa__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Manufacto__Manuf__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Part_asse__Manuf__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Material__NumUni__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__MaterialC__Num_m__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Card_work__CodeO__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__OrderPosi__Order__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__OrderPosi__PAUID__45F365D3" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.75" PointY="9.2192327692307643" />
+          <ConnectorPoint PointX="6.9749733014404782" PointY="9.2192327692307643" />
+          <ConnectorPoint PointX="6.9749733014404782" PointY="5.6837504045458953" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="5.6837504045458944" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="5.6837504045458953" />
+          <ConnectorPoint PointX="12.5" PointY="5.6837504045458953" />
+          <ConnectorPoint PointX="12.5" PointY="5.2398893229166656" />
+        </AssociationConnector>
+        <AssociationConnector Association="VeloRaModel.FK__Card_work__PAUID__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__MaterialC__PAUID__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Structure__Num_p__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Structure__Num_p__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="VeloRaModel.FK__Card_work__CodeP__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

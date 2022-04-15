@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VeloRaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="GetConstruction_Result">
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Num_product" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="GetReverseConstruction_Result">
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Num_product" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Client__AccountI__4CA06362" FromRole="Client" ToRole="Users" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK__Contract__Client__5070F446" FromRole="Client" ToRole="Contract" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="ContractID" />
+      <PropertyRef Name="ClientID" />
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Contract__Client__5070F446" FromRole="Contract" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Contract__Employ__4F7CD00D" FromRole="Contract" ToRole="Employee" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__Order__5165187F" FromRole="Contract" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="CodePost" Type="Int32" Nullable="false" />
+    <Property Name="ManufactoryID" Type="Int32" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK__Contract__Employ__4F7CD00D" FromRole="Employee" ToRole="Contract" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Employee__Accoun__4BAC3F29" FromRole="Employee" ToRole="Users" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Employee__CodePo__49C3F6B7" FromRole="Employee" ToRole="Post" />
+    <NavigationProperty Name="Manufactory" Relationship="Self.FK__Employee__Manufa__47DBAE45" FromRole="Employee" ToRole="Manufactory" />
+  </EntityType>
+  <EntityType Name="Manufactory">
+    <Key>
+      <PropertyRef Name="ManufactoryID" />
+    </Key>
+    <Property Name="ManufactoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufactoryTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="28" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Manufa__47DBAE45" FromRole="Manufactory" ToRole="Employee" />
+    <NavigationProperty Name="ManufactoryType" Relationship="Self.FK__Manufacto__Manuf__4D94879B" FromRole="Manufactory" ToRole="ManufactoryType" />
+    <NavigationProperty Name="Part_assembly_unit" Relationship="Self.FK__Part_asse__Manuf__46E78A0C" FromRole="Manufactory" ToRole="Part_assembly_unit" />
+  </EntityType>
+  <EntityType Name="ManufactoryType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Manufactory" Relationship="Self.FK__Manufacto__Manuf__4D94879B" FromRole="ManufactoryType" ToRole="Manufactory" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="CodeMaterial" />
+    </Key>
+    <Property Name="CodeMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PriceMaterial" Type="Int32" Nullable="false" />
+    <Property Name="NumUnit" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK__Material__NumUni__403A8C7D" FromRole="Material" ToRole="Unit" />
+    <NavigationProperty Name="MaterialCard" Relationship="Self.FK__MaterialC__Num_m__412EB0B6" FromRole="Material" ToRole="MaterialCard" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="CodeOperation" />
+    </Key>
+    <Property Name="CodeOperation" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Card_work" Relationship="Self.FK__Card_work__CodeO__4AB81AF0" FromRole="Operation" ToRole="Card_work" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="ClientID" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Contract" Relationship="Self.FK__Order__5165187F" FromRole="Order" ToRole="Contract" />
+    <NavigationProperty Name="OrderPosition" Relationship="Self.FK__OrderPosi__Order__4E88ABD4" FromRole="Order" ToRole="OrderPosition" />
+  </EntityType>
+  <EntityType Name="OrderPosition">
+    <Key>
+      <PropertyRef Name="PosID" />
+    </Key>
+    <Property Name="PosID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="Ammount" Type="Int32" Nullable="false" />
+    <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__OrderPosi__Order__4E88ABD4" FromRole="OrderPosition" ToRole="Order" />
+    <NavigationProperty Name="Part_assembly_unit" Relationship="Self.FK__OrderPosi__PAUID__45F365D3" FromRole="OrderPosition" ToRole="Part_assembly_unit" />
+  </EntityType>
+  <EntityType Name="Part_assembly_unit">
+    <Key>
+      <PropertyRef Name="PAUID" />
+    </Key>
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="ManufactoryID" Type="Int32" Nullable="false" />
+    <Property Name="NameProduct" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Manufactory" Relationship="Self.FK__Part_asse__Manuf__46E78A0C" FromRole="Part_assembly_unit" ToRole="Manufactory" />
+    <NavigationProperty Name="OrderPosition" Relationship="Self.FK__OrderPosi__PAUID__45F365D3" FromRole="Part_assembly_unit" ToRole="OrderPosition" />
+    <NavigationProperty Name="Card_work" Relationship="Self.FK__Card_work__PAUID__44FF419A" FromRole="Part_assembly_unit" ToRole="Card_work" />
+    <NavigationProperty Name="MaterialCard" Relationship="Self.FK__MaterialC__PAUID__4222D4EF" FromRole="Part_assembly_unit" ToRole="MaterialCard" />
+    <NavigationProperty Name="Structure" Relationship="Self.FK__Structure__Num_p__4316F928" FromRole="Part_assembly_unit" ToRole="Structure" />
+    <NavigationProperty Name="Structure1" Relationship="Self.FK__Structure__Num_p__440B1D61" FromRole="Part_assembly_unit" ToRole="Structure" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="CodePost" />
+    </Key>
+    <Property Name="CodePost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePost" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__CodePo__49C3F6B7" FromRole="Post" ToRole="Employee" />
+    <NavigationProperty Name="Card_work" Relationship="Self.FK__Card_work__CodeP__48CFD27E" FromRole="Post" ToRole="Card_work" />
+  </EntityType>
+  <EntityType Name="Structure">
+    <Key>
+      <PropertyRef Name="Num_product_what" />
+      <PropertyRef Name="Num_product_where" />
+    </Key>
+    <Property Name="Num_product_what" Type="Int32" Nullable="false" />
+    <Property Name="Num_product_where" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Part_assembly_unit" Relationship="Self.FK__Structure__Num_p__4316F928" FromRole="Structure" ToRole="Part_assembly_unit" />
+    <NavigationProperty Name="Part_assembly_unit1" Relationship="Self.FK__Structure__Num_p__440B1D61" FromRole="Structure" ToRole="Part_assembly_unit" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="NumUnit" />
+    </Key>
+    <Property Name="NumUnit" Type="Int32" Nullable="false" />
+    <Property Name="NameUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Material" Relationship="Self.FK__Material__NumUni__403A8C7D" FromRole="Unit" ToRole="Material" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="AccountID" />
+    </Key>
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Client__AccountI__4CA06362" FromRole="Users" ToRole="Client" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__Accoun__4BAC3F29" FromRole="Users" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Card_work">
+    <Key>
+      <PropertyRef Name="PAUID" />
+      <PropertyRef Name="CodeOperation" />
+      <PropertyRef Name="OperatonOrder" />
+      <PropertyRef Name="ElapsedTime" />
+    </Key>
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="CodePost" Type="Int32" />
+    <Property Name="CodeOperation" Type="Int32" Nullable="false" />
+    <Property Name="OperatonOrder" Type="Int32" Nullable="false" />
+    <Property Name="ElapsedTime" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK__Card_work__CodeO__4AB81AF0" FromRole="Card_work" ToRole="Operation" />
+    <NavigationProperty Name="Part_assembly_unit" Relationship="Self.FK__Card_work__PAUID__44FF419A" FromRole="Card_work" ToRole="Part_assembly_unit" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Card_work__CodeP__48CFD27E" FromRole="Card_work" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="MaterialCard">
+    <Key>
+      <PropertyRef Name="Num_material" />
+      <PropertyRef Name="PAUID" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="Num_material" Type="Int32" Nullable="false" />
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Material" Relationship="Self.FK__MaterialC__Num_m__412EB0B6" FromRole="MaterialCard" ToRole="Material" />
+    <NavigationProperty Name="Part_assembly_unit" Relationship="Self.FK__MaterialC__PAUID__4222D4EF" FromRole="MaterialCard" ToRole="Part_assembly_unit" />
+  </EntityType>
+  <EntityType Name="FA_Card_work">
+    <Key>
+      <PropertyRef Name="PAUID" />
+      <PropertyRef Name="CodeOperation" />
+      <PropertyRef Name="OperatonOrder" />
+      <PropertyRef Name="ElapsedTime" />
+    </Key>
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="CodePost" Type="Int32" />
+    <Property Name="CodeOperation" Type="Int32" Nullable="false" />
+    <Property Name="OperatonOrder" Type="Int32" Nullable="false" />
+    <Property Name="ElapsedTime" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="AccountID" />
+      <PropertyRef Name="CodePost" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" Nullable="false" />
+    <Property Name="CodePost" Type="Int32" Nullable="false" />
+    <Property Name="ManufactoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="FA_Material">
+    <Key>
+      <PropertyRef Name="CodeMaterial" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="PriceMaterial" />
+      <PropertyRef Name="NumUnit" />
+    </Key>
+    <Property Name="CodeMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PriceMaterial" Type="Int32" Nullable="false" />
+    <Property Name="NumUnit" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Material_card">
+    <Key>
+      <PropertyRef Name="Num_material" />
+      <PropertyRef Name="PAUID" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="Num_material" Type="Int32" Nullable="false" />
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Nomencloture">
+    <Key>
+      <PropertyRef Name="PAUID" />
+      <PropertyRef Name="ManufactoryID" />
+      <PropertyRef Name="NameProduct" />
+    </Key>
+    <Property Name="PAUID" Type="Int32" Nullable="false" />
+    <Property Name="ManufactoryID" Type="Int32" Nullable="false" />
+    <Property Name="NameProduct" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Operation">
+    <Key>
+      <PropertyRef Name="CodeOperation" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="CodeOperation" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Post">
+    <Key>
+      <PropertyRef Name="CodePost" />
+      <PropertyRef Name="NamePost" />
+    </Key>
+    <Property Name="CodePost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NamePost" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Structure">
+    <Key>
+      <PropertyRef Name="Num_product_what" />
+      <PropertyRef Name="Num_product_where" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="Num_product_what" Type="Int32" Nullable="false" />
+    <Property Name="Num_product_where" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FA_Unit">
+    <Key>
+      <PropertyRef Name="NumUnit" />
+      <PropertyRef Name="NameUnit" />
+    </Key>
+    <Property Name="NumUnit" Type="Int32" Nullable="false" />
+    <Property Name="NameUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Client__AccountI__4CA06362">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contract__Client__5070F446">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Contract__Employ__4F7CD00D">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__5165187F">
+    <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contract">
+        <PropertyRef Name="ContractID" />
+        <PropertyRef Name="ClientID" />
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ContractID" />
+        <PropertyRef Name="ClientID" />
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Accoun__4BAC3F29">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="AccountID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__CodePo__49C3F6B7">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="CodePost" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CodePost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__Manufa__47DBAE45">
+    <End Role="Manufactory" Type="Self.Manufactory" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufactory">
+        <PropertyRef Name="ManufactoryID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="ManufactoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Manufacto__Manuf__4D94879B">
+    <End Role="ManufactoryType" Type="Self.ManufactoryType" Multiplicity="1" />
+    <End Role="Manufactory" Type="Self.Manufactory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ManufactoryType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Manufactory">
+        <PropertyRef Name="ManufactoryTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Part_asse__Manuf__46E78A0C">
+    <End Role="Manufactory" Type="Self.Manufactory" Multiplicity="1" />
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufactory">
+        <PropertyRef Name="ManufactoryID" />
+      </Principal>
+      <Dependent Role="Part_assembly_unit">
+        <PropertyRef Name="ManufactoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Material__NumUni__403A8C7D">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Material" Type="Self.Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="NumUnit" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="NumUnit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MaterialC__Num_m__412EB0B6">
+    <End Role="Material" Type="Self.Material" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MaterialCard" Type="Self.MaterialCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="CodeMaterial" />
+      </Principal>
+      <Dependent Role="MaterialCard">
+        <PropertyRef Name="Num_material" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card_work__CodeO__4AB81AF0">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Card_work" Type="Self.Card_work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="CodeOperation" />
+      </Principal>
+      <Dependent Role="Card_work">
+        <PropertyRef Name="CodeOperation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderPosi__Order__4E88ABD4">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderPosition" Type="Self.OrderPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderPosition">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderPosi__PAUID__45F365D3">
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="1" />
+    <End Role="OrderPosition" Type="Self.OrderPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part_assembly_unit">
+        <PropertyRef Name="PAUID" />
+      </Principal>
+      <Dependent Role="OrderPosition">
+        <PropertyRef Name="PAUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card_work__PAUID__44FF419A">
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Card_work" Type="Self.Card_work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part_assembly_unit">
+        <PropertyRef Name="PAUID" />
+      </Principal>
+      <Dependent Role="Card_work">
+        <PropertyRef Name="PAUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MaterialC__PAUID__4222D4EF">
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MaterialCard" Type="Self.MaterialCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part_assembly_unit">
+        <PropertyRef Name="PAUID" />
+      </Principal>
+      <Dependent Role="MaterialCard">
+        <PropertyRef Name="PAUID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Structure__Num_p__4316F928">
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="1" />
+    <End Role="Structure" Type="Self.Structure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part_assembly_unit">
+        <PropertyRef Name="PAUID" />
+      </Principal>
+      <Dependent Role="Structure">
+        <PropertyRef Name="Num_product_what" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Structure__Num_p__440B1D61">
+    <End Role="Part_assembly_unit" Type="Self.Part_assembly_unit" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Structure" Type="Self.Structure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Part_assembly_unit">
+        <PropertyRef Name="PAUID" />
+      </Principal>
+      <Dependent Role="Structure">
+        <PropertyRef Name="Num_product_where" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card_work__CodeP__48CFD27E">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Card_work" Type="Self.Card_work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="CodePost" />
+      </Principal>
+      <Dependent Role="Card_work">
+        <PropertyRef Name="CodePost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Practik1282Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="Manufactory" EntityType="Self.Manufactory" />
+    <EntitySet Name="ManufactoryType" EntityType="Self.ManufactoryType" />
+    <EntitySet Name="Material" EntityType="Self.Material" />
+    <EntitySet Name="Operation" EntityType="Self.Operation" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="OrderPosition" EntityType="Self.OrderPosition" />
+    <EntitySet Name="Part_assembly_unit" EntityType="Self.Part_assembly_unit" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="Structure" EntityType="Self.Structure" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Card_work" EntityType="Self.Card_work" />
+    <EntitySet Name="MaterialCard" EntityType="Self.MaterialCard" />
+    <EntitySet Name="FA_Card_work" EntityType="Self.FA_Card_work" />
+    <EntitySet Name="FA_Employees" EntityType="Self.FA_Employees" />
+    <EntitySet Name="FA_Material" EntityType="Self.FA_Material" />
+    <EntitySet Name="FA_Material_card" EntityType="Self.FA_Material_card" />
+    <EntitySet Name="FA_Nomencloture" EntityType="Self.FA_Nomencloture" />
+    <EntitySet Name="FA_Operation" EntityType="Self.FA_Operation" />
+    <EntitySet Name="FA_Post" EntityType="Self.FA_Post" />
+    <EntitySet Name="FA_Structure" EntityType="Self.FA_Structure" />
+    <EntitySet Name="FA_Unit" EntityType="Self.FA_Unit" />
+    <AssociationSet Name="FK__Client__AccountI__4CA06362" Association="Self.FK__Client__AccountI__4CA06362">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contract__Client__5070F446" Association="Self.FK__Contract__Client__5070F446">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Contract__Employ__4F7CD00D" Association="Self.FK__Contract__Employ__4F7CD00D">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__5165187F" Association="Self.FK__Order__5165187F">
+      <End Role="Contract" EntitySet="Contract" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Accoun__4BAC3F29" Association="Self.FK__Employee__Accoun__4BAC3F29">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__CodePo__49C3F6B7" Association="Self.FK__Employee__CodePo__49C3F6B7">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__Manufa__47DBAE45" Association="Self.FK__Employee__Manufa__47DBAE45">
+      <End Role="Manufactory" EntitySet="Manufactory" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Manufacto__Manuf__4D94879B" Association="Self.FK__Manufacto__Manuf__4D94879B">
+      <End Role="ManufactoryType" EntitySet="ManufactoryType" />
+      <End Role="Manufactory" EntitySet="Manufactory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Part_asse__Manuf__46E78A0C" Association="Self.FK__Part_asse__Manuf__46E78A0C">
+      <End Role="Manufactory" EntitySet="Manufactory" />
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Material__NumUni__403A8C7D" Association="Self.FK__Material__NumUni__403A8C7D">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Material" EntitySet="Material" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MaterialC__Num_m__412EB0B6" Association="Self.FK__MaterialC__Num_m__412EB0B6">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="MaterialCard" EntitySet="MaterialCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card_work__CodeO__4AB81AF0" Association="Self.FK__Card_work__CodeO__4AB81AF0">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="Card_work" EntitySet="Card_work" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderPosi__Order__4E88ABD4" Association="Self.FK__OrderPosi__Order__4E88ABD4">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderPosition" EntitySet="OrderPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderPosi__PAUID__45F365D3" Association="Self.FK__OrderPosi__PAUID__45F365D3">
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+      <End Role="OrderPosition" EntitySet="OrderPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card_work__PAUID__44FF419A" Association="Self.FK__Card_work__PAUID__44FF419A">
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+      <End Role="Card_work" EntitySet="Card_work" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MaterialC__PAUID__4222D4EF" Association="Self.FK__MaterialC__PAUID__4222D4EF">
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+      <End Role="MaterialCard" EntitySet="MaterialCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Structure__Num_p__4316F928" Association="Self.FK__Structure__Num_p__4316F928">
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+      <End Role="Structure" EntitySet="Structure" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Structure__Num_p__440B1D61" Association="Self.FK__Structure__Num_p__440B1D61">
+      <End Role="Part_assembly_unit" EntitySet="Part_assembly_unit" />
+      <End Role="Structure" EntitySet="Structure" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card_work__CodeP__48CFD27E" Association="Self.FK__Card_work__CodeP__48CFD27E">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Card_work" EntitySet="Card_work" />
+    </AssociationSet>
+    <FunctionImport Name="GetConstruction" IsComposable="true" ReturnType="Collection(VeloRaModel.GetConstruction_Result)">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetReverseConstruction" IsComposable="true" ReturnType="Collection(VeloRaModel.GetReverseConstruction_Result)">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Card_work">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Employees">
+      <Parameter Name="Code_empl" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Material">
+      <Parameter Name="Num_material" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Nomencloture">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Operation">
+      <Parameter Name="Num_operation" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Passport_data">
+      <Parameter Name="Serial" Mode="In" Type="String" />
+      <Parameter Name="Number" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Post">
+      <Parameter Name="Code_post" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Structure">
+      <Parameter Name="Num_product_where" Mode="In" Type="Int32" />
+      <Parameter Name="Num_product_what" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DT_Unit">
+      <Parameter Name="Code_unit" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetAvailableItems" ReturnType="Collection(VeloRaModel.GetAvailableItems_Result)">
+      <Parameter Name="ForItemID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="IT_Material_card">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+      <Parameter Name="Num_material" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="IT_Nomencloture">
+      <Parameter Name="Name_product" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="IT_Structure">
+      <Parameter Name="Name_product_where" Mode="In" Type="Int32" />
+      <Parameter Name="Name_product_what" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity_product" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NodeAmmount">
+      <Parameter Name="Num_product_where" Mode="In" Type="Int32" />
+      <Parameter Name="Result" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UT_Nomencloture">
+      <Parameter Name="Num_product" Mode="In" Type="Int32" />
+      <Parameter Name="Name_product" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UT_Structure">
+      <Parameter Name="Num_product_where" Mode="In" Type="Int32" />
+      <Parameter Name="Num_product_what" Mode="In" Type="Int32" />
+      <Parameter Name="Quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetAvailableItems_Result">
+    <Property Type="Int32" Name="PAUID" Nullable="false" />
+    <Property Type="Int32" Name="ManufactoryID" Nullable="false" />
+    <Property Type="String" Name="NameProduct" Nullable="false" MaxLength="40" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище VeloRaModelContainer" CdmEntityContainer="Practik1282Entities">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="VeloRaModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contract">
+      <EntityTypeMapping TypeName="VeloRaModel.Contract">
+        <MappingFragment StoreEntitySet="Contract">
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="VeloRaModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufactory">
+      <EntityTypeMapping TypeName="VeloRaModel.Manufactory">
+        <MappingFragment StoreEntitySet="Manufactory">
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+          <ScalarProperty Name="ManufactoryTypeID" ColumnName="ManufactoryTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManufactoryType">
+      <EntityTypeMapping TypeName="VeloRaModel.ManufactoryType">
+        <MappingFragment StoreEntitySet="ManufactoryType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="VeloRaModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="CodeMaterial" ColumnName="CodeMaterial" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PriceMaterial" ColumnName="PriceMaterial" />
+          <ScalarProperty Name="NumUnit" ColumnName="NumUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operation">
+      <EntityTypeMapping TypeName="VeloRaModel.Operation">
+        <MappingFragment StoreEntitySet="Operation">
+          <ScalarProperty Name="CodeOperation" ColumnName="CodeOperation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="VeloRaModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderPosition">
+      <EntityTypeMapping TypeName="VeloRaModel.OrderPosition">
+        <MappingFragment StoreEntitySet="OrderPosition">
+          <ScalarProperty Name="PosID" ColumnName="PosID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="Ammount" ColumnName="Ammount" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Part_assembly_unit">
+      <EntityTypeMapping TypeName="VeloRaModel.Part_assembly_unit">
+        <MappingFragment StoreEntitySet="Part-assembly unit">
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="VeloRaModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Structure">
+      <EntityTypeMapping TypeName="VeloRaModel.Structure">
+        <MappingFragment StoreEntitySet="Structure">
+          <ScalarProperty Name="Num_product_what" ColumnName="Num_product_what" />
+          <ScalarProperty Name="Num_product_where" ColumnName="Num_product_where" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unit">
+      <EntityTypeMapping TypeName="VeloRaModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="NumUnit" ColumnName="NumUnit" />
+          <ScalarProperty Name="NameUnit" ColumnName="NameUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="VeloRaModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Card_work">
+      <EntityTypeMapping TypeName="VeloRaModel.Card_work">
+        <MappingFragment StoreEntitySet="Card_work">
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="CodeOperation" ColumnName="CodeOperation" />
+          <ScalarProperty Name="OperatonOrder" ColumnName="OperatonOrder" />
+          <ScalarProperty Name="ElapsedTime" ColumnName="ElapsedTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialCard">
+      <EntityTypeMapping TypeName="VeloRaModel.MaterialCard">
+        <MappingFragment StoreEntitySet="MaterialCard">
+          <ScalarProperty Name="Num_material" ColumnName="Num_material" />
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Card_work">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Card_work">
+        <MappingFragment StoreEntitySet="FA_Card_work">
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="CodeOperation" ColumnName="CodeOperation" />
+          <ScalarProperty Name="OperatonOrder" ColumnName="OperatonOrder" />
+          <ScalarProperty Name="ElapsedTime" ColumnName="ElapsedTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Employees">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Employees">
+        <MappingFragment StoreEntitySet="FA_Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Material">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Material">
+        <MappingFragment StoreEntitySet="FA_Material">
+          <ScalarProperty Name="CodeMaterial" ColumnName="CodeMaterial" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PriceMaterial" ColumnName="PriceMaterial" />
+          <ScalarProperty Name="NumUnit" ColumnName="NumUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Material_card">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Material_card">
+        <MappingFragment StoreEntitySet="FA_Material_card">
+          <ScalarProperty Name="Num_material" ColumnName="Num_material" />
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Nomencloture">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Nomencloture">
+        <MappingFragment StoreEntitySet="FA_Nomencloture">
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Operation">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Operation">
+        <MappingFragment StoreEntitySet="FA_Operation">
+          <ScalarProperty Name="CodeOperation" ColumnName="CodeOperation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Post">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Post">
+        <MappingFragment StoreEntitySet="FA_Post">
+          <ScalarProperty Name="CodePost" ColumnName="CodePost" />
+          <ScalarProperty Name="NamePost" ColumnName="NamePost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Structure">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Structure">
+        <MappingFragment StoreEntitySet="FA_Structure">
+          <ScalarProperty Name="Num_product_what" ColumnName="Num_product_what" />
+          <ScalarProperty Name="Num_product_where" ColumnName="Num_product_where" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FA_Unit">
+      <EntityTypeMapping TypeName="VeloRaModel.FA_Unit">
+        <MappingFragment StoreEntitySet="FA_Unit">
+          <ScalarProperty Name="NumUnit" ColumnName="NumUnit" />
+          <ScalarProperty Name="NameUnit" ColumnName="NameUnit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="Хранилище VeloRaModel.GetConstruction" FunctionImportName="GetConstruction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VeloRaModel.GetConstruction_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Num_product" ColumnName="Num_product" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="Хранилище VeloRaModel.GetReverseConstruction" FunctionImportName="GetReverseConstruction">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VeloRaModel.GetReverseConstruction_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Num_product" ColumnName="Num_product" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="DT_Card_work" FunctionName="Хранилище VeloRaModel.DT_Card_work" />
+    <FunctionImportMapping FunctionImportName="DT_Employees" FunctionName="Хранилище VeloRaModel.DT_Employees" />
+    <FunctionImportMapping FunctionImportName="DT_Material" FunctionName="Хранилище VeloRaModel.DT_Material" />
+    <FunctionImportMapping FunctionImportName="DT_Nomencloture" FunctionName="Хранилище VeloRaModel.DT_Nomencloture" />
+    <FunctionImportMapping FunctionImportName="DT_Operation" FunctionName="Хранилище VeloRaModel.DT_Operation" />
+    <FunctionImportMapping FunctionImportName="DT_Passport_data" FunctionName="Хранилище VeloRaModel.DT_Passport_data" />
+    <FunctionImportMapping FunctionImportName="DT_Post" FunctionName="Хранилище VeloRaModel.DT_Post" />
+    <FunctionImportMapping FunctionImportName="DT_Structure" FunctionName="Хранилище VeloRaModel.DT_Structure" />
+    <FunctionImportMapping FunctionImportName="DT_Unit" FunctionName="Хранилище VeloRaModel.DT_Unit" />
+    <FunctionImportMapping FunctionImportName="GetAvailableItems" FunctionName="Хранилище VeloRaModel.GetAvailableItems">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VeloRaModel.GetAvailableItems_Result">
+          <ScalarProperty Name="PAUID" ColumnName="PAUID" />
+          <ScalarProperty Name="ManufactoryID" ColumnName="ManufactoryID" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="IT_Material_card" FunctionName="Хранилище VeloRaModel.IT_Material_card" />
+    <FunctionImportMapping FunctionImportName="IT_Nomencloture" FunctionName="Хранилище VeloRaModel.IT_Nomencloture" />
+    <FunctionImportMapping FunctionImportName="IT_Structure" FunctionName="Хранилище VeloRaModel.IT_Structure" />
+    <FunctionImportMapping FunctionImportName="NodeAmmount" FunctionName="Хранилище VeloRaModel.NodeAmmount" />
+    <FunctionImportMapping FunctionImportName="UT_Nomencloture" FunctionName="Хранилище VeloRaModel.UT_Nomencloture" />
+    <FunctionImportMapping FunctionImportName="UT_Structure" FunctionName="Хранилище VeloRaModel.UT_Structure" />
+  </EntityContainerMapping>
+</Mapping>
